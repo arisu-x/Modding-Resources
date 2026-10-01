@@ -1,258 +1,212 @@
-# Awesome Android Reverse Engineering & Modding
+# Modding Resources
 
-> A curated directory of tools, frameworks, and repositories for Android and native C/C++ security analysis, reverse engineering, and app modding.
+> A practical, searchable directory of tools and learning resources for Android modding, reverse engineering, native analysis, malware research, networking, and software development.
 
-![Awesome](https://img.shields.io/badge/awesome-list-blue)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-![License](https://img.shields.io/badge/license-CC0--1.0-lightgrey)
-![Last Updated](https://img.shields.io/badge/updated-YYYY--MM--DD-informational)
+[![Awesome List](https://img.shields.io/badge/awesome-list-2ea44f?logo=github)](https://github.com/sindresorhus/awesome)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![License: CC0](https://img.shields.io/badge/license-CC0--1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
----
+Find a tool quickly with `Ctrl`/`Cmd` + `F`, or start with one of the curated paths below.
 
-## Table of Contents
+## Quick navigation
 
-- [About](#about)
-- [Legal & Ethical Use](#legal--ethical-use)
-- [Android Reverse Engineering & Decompilation](#android-reverse-engineering--decompilation)
-- [Native C/C++ Disassembling & Debugging](#native-cc-disassembling--debugging)
-- [Hooking Frameworks (ART and Native)](#hooking-frameworks-art-and-native)
-- [API Bypasses and System Modifications](#api-bypasses-and-system-modifications)
-- [Scripting & Instrumentation](#scripting--instrumentation)
-- [Deobfuscation & Unpacking Tools](#deobfuscation--unpacking-tools)
-- [Learning Resources](#learning-resources)
-- [Contributing](#contributing)
-- [License](#license)
+| I want to… | Start here |
+|---|---|
+| Modify an Android APK | [Android workflow](QUICK_START.md#android-apk-workflow) |
+| Inspect Java, Kotlin, or DEX code | [Android reverse engineering](#android-reverse-engineering) |
+| Analyze a native `.so` or executable | [Native and binary analysis](#native-and-binary-analysis) |
+| Instrument a running app | [Dynamic instrumentation](#dynamic-instrumentation-and-hooking) |
+| Learn from beginner to advanced | [Learning paths](LEARNING_PATHS.md) |
+| Choose tools by operating system | [Platform matrix](TOOLS_BY_PLATFORM.md) |
+| Find a category or understand its scope | [Category guide](CATEGORIES.md) |
+| Add a resource | [Contributing guide](CONTRIBUTING.md) |
 
----
+## Contents
 
-## About
+- [Responsible use](#responsible-use)
+- [Android reverse engineering](#android-reverse-engineering)
+- [Dynamic instrumentation and hooking](#dynamic-instrumentation-and-hooking)
+- [Root, patching, and system modification](#root-patching-and-system-modification)
+- [Native and binary analysis](#native-and-binary-analysis)
+- [Networking and protocol analysis](#networking-and-protocol-analysis)
+- [Malware analysis and threat research](#malware-analysis-and-threat-research)
+- [Cryptography and data formats](#cryptography-and-data-formats)
+- [Automation, emulation, and scripting](#automation-emulation-and-scripting)
+- [Developer and workflow tools](#developer-and-workflow-tools)
+- [Game modding](#game-modding)
+- [Learning resources](#learning-resources)
+- [Guides](#guides)
 
-This list collects well-regarded tools for analyzing, instrumenting, and modifying Android applications across both the managed layer (Java/Kotlin, Dalvik/ART bytecode) and the native layer (C/C++, JNI, ELF shared libraries).
+## Responsible use
 
-**Inclusion criteria**
+Use these resources only on software, devices, accounts, and networks that you own or are authorized to test. Respect licenses, terms of service, privacy, and applicable laws. Do not use this list to bypass payments, steal accounts, evade security controls, or distribute malware. Prefer legal training targets, CTFs, open-source projects, and responsible disclosure.
 
-- Actively maintained, or historically important and still widely referenced
-- Clear documentation and a public repository or official site
-- Relevant to security research, malware analysis, interoperability, or app modding
+## Android reverse engineering
 
-**Legend**
+| Resource | Best for |
+|---|---|
+| [JADX](https://github.com/skylot/jadx) | Reading DEX as Java-like source with GUI and CLI workflows |
+| [Apktool](https://github.com/iBotPeaches/Apktool) | Decoding resources, editing smali, and rebuilding APKs |
+| [smali/baksmali](https://github.com/JesusFreke/smali) | Dalvik bytecode assembly and disassembly |
+| [Android Studio](https://developer.android.com/studio) | Building, debugging, profiling, and inspecting Android projects |
+| [APKLab](https://github.com/Surendrajat/APKLab) | VS Code-based APK reverse engineering workflow |
+| [Androguard](https://github.com/androguard/androguard) | Python automation and static analysis of APK/DEX/AXML |
+| [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) | Automated mobile application security testing |
+| [uber-apk-signer](https://github.com/patrickfav/uber-apk-signer) | Zip alignment and APK signing |
+| [APKiD](https://github.com/rednaga/APKiD) | Identifying packers, obfuscators, and compilers |
+| [ReVanced](https://github.com/ReVanced) | Open-source, modular patching framework |
 
-| Tag | Meaning |
-|-----|---------|
-| 🟢 | Open source |
-| 🔒 | Commercial / closed source |
-| 🕰️ | Unmaintained, kept for reference |
+## Dynamic instrumentation and hooking
 
----
+| Resource | Best for |
+|---|---|
+| [Frida](https://github.com/frida/frida) | Runtime instrumentation across Java and native code |
+| [frida-tools](https://github.com/frida/frida-tools) | Frida CLI utilities and tracing |
+| [Frida documentation](https://frida.re/docs/home/) | Official API and usage reference |
+| [LSPosed](https://github.com/LSPosed/LSPosed) | ART/Xposed-compatible modules on rooted devices |
+| [LSPatch](https://github.com/LSPosed/LSPatch) | Non-root APK-integrated hooking experiments |
+| [Pine](https://github.com/canyie/pine) | In-process ART method hooking |
+| [Dobby](https://github.com/jmpews/Dobby) | Lightweight native inline hooks |
+| [ShadowHook](https://github.com/bytedance/android-inline-hook) | Android ARM/ARM64 native inline hooks |
+| [Frida CodeShare](https://codeshare.frida.re/) | Community scripts; review before running |
+| [objection](https://github.com/sensepost/objection) | Frida-powered runtime exploration |
 
-## Legal & Ethical Use
+## Root, patching, and system modification
 
-The tools listed here are intended for **security research, education, interoperability, and modification of software you own or are authorized to test**. Always:
+| Resource | Best for |
+|---|---|
+| [Magisk](https://github.com/topjohnwu/Magisk) | Systemless root and module development |
+| [KernelSU](https://github.com/tiann/KernelSU) | Kernel-based root and per-app policies |
+| [APatch](https://github.com/bmax121/APatch) | Kernel/system patching experiments |
+| [LSPosed modules index](https://modules.lsposed.org/) | Discovering community modules |
+| [Android platform security](https://source.android.com/docs/security) | Understanding Android security architecture |
 
-- Obtain written permission before testing apps or services you do not own.
-- Respect software licenses, terms of service, and applicable laws (e.g., DMCA, CFAA, and local equivalents).
-- Follow responsible disclosure practices when you discover vulnerabilities.
+## Native and binary analysis
 
-The maintainers of this list do not condone misuse.
+| Resource | Best for |
+|---|---|
+| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Free disassembly, decompilation, and scripting |
+| [IDA Free/Pro](https://hex-rays.com/ida-pro) | Interactive disassembly and commercial analysis |
+| [Binary Ninja](https://binary.ninja/) | Modern analysis and intermediate languages |
+| [Rizin](https://github.com/rizinorg/rizin) | Scriptable reverse engineering framework |
+| [Cutter](https://github.com/rizinorg/cutter) | GUI for Rizin |
+| [radare2](https://github.com/radareorg/radare2) | CLI disassembly, debugging, and patching |
+| [LLDB](https://lldb.llvm.org/) | Native debugging and Android Studio integration |
+| [GDB](https://sourceware.org/gdb/) | Portable native debugging |
+| [pwndbg](https://github.com/pwndbg/pwndbg) | GDB enhancements for binary analysis |
+| [Capstone](https://github.com/capstone-engine/capstone) | Multi-architecture disassembly library |
+| [Keystone](https://github.com/keystone-engine/keystone) | Multi-architecture assembler library |
+| [Unicorn](https://github.com/unicorn-engine/unicorn) | CPU emulation library |
+| [Android NDK](https://developer.android.com/ndk) | Official native build and inspection toolchain |
 
----
+## Networking and protocol analysis
 
-## Android Reverse Engineering & Decompilation
+| Resource | Best for |
+|---|---|
+| [Wireshark](https://www.wireshark.org/) | Packet capture and protocol inspection |
+| [mitmproxy](https://github.com/mitmproxy/mitmproxy) | Interactive HTTP(S) testing proxy |
+| [Burp Suite](https://portswigger.net/burp) | Web and mobile security testing |
+| [HTTP Toolkit](https://httptoolkit.com/) | Debugging HTTP traffic with a friendly UI |
+| [curl](https://curl.se/) | Reproducible HTTP and network requests |
+| [Protobuf](https://protobuf.dev/) | Working with structured binary messages |
+| [gRPC](https://grpc.io/) | Inspecting and building RPC services |
+| [OWASP API Security](https://owasp.org/www-project-api-security/) | API security risks and testing guidance |
 
-Tools for unpacking APKs, decompiling DEX bytecode to Java/Kotlin-like source, and editing smali.
+## Malware analysis and threat research
 
-| Tool | Description |
-|------|-------------|
-| [JADX](https://github.com/skylot/jadx) 🟢 | DEX-to-Java decompiler with CLI and GUI, built-in deobfuscation, and a searchable, cross-referenced code view. |
-| [Apktool](https://github.com/iBotPeaches/Apktool) 🟢 | Decodes resources and disassembles DEX to smali, then rebuilds modified APKs. The standard for repackaging workflows. |
-| [smali / baksmali](https://github.com/JesusFreke/smali) 🟢 | Assembler and disassembler for the Dalvik executable format; the foundation of most bytecode-level patching. |
-| [Bytecode Viewer](https://github.com/Konloch/bytecode-viewer) 🟢 | Java/Android bytecode viewer and editor that bundles multiple decompilers for side-by-side comparison. |
-| [dex2jar](https://github.com/pxb1988/dex2jar) 🟢 | Converts DEX to JAR so standard Java analysis tools can be applied. |
-| [Recaf](https://github.com/Col-E/Recaf) 🟢 | Modern Java bytecode editor with decompilation, assembler, and a plugin system. |
-| [Androguard](https://github.com/androguard/androguard) 🟢 | Python framework for static analysis of APK/DEX/AXML files, including call-graph generation and signature checks. |
-| [APKLab](https://github.com/APKLab/APKLab) 🟢 | VS Code extension that integrates Apktool, JADX, and signing into a single reverse engineering workflow. |
-| [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) 🟢 | Automated static and dynamic analysis framework for Android, iOS, and Windows mobile apps. |
-| [uber-apk-signer](https://github.com/patrickfav/uber-apk-signer) 🟢 | CLI utility for zip-aligning and signing rebuilt APKs across signature schemes. |
+| Resource | Best for |
+|---|---|
+| [REMnux](https://remnux.org/) | Linux toolkit and VM for malware analysis |
+| [FLARE-VM](https://github.com/mandiant/flare-vm) | Windows reverse engineering environment |
+| [YARA](https://github.com/VirusTotal/yara) | Pattern-based file classification |
+| [CAPE Sandbox](https://github.com/kevoreilly/capemon) | Automated malware behavior analysis |
+| [Any.Run](https://any.run/) | Interactive sandboxing; check data-sharing terms |
+| [VirusTotal](https://www.virustotal.com/) | Multi-engine file and URL intelligence |
+| [Sigma](https://github.com/SigmaHQ/sigma) | Portable detection rule format |
+| [MITRE ATT&CK](https://attack.mitre.org/) | Adversary tactics, techniques, and procedures |
 
----
+Run suspicious samples in an isolated lab. Never upload private or sensitive files to public services.
 
-## Native C/C++ Disassembling & Debugging
+## Cryptography and data formats
 
-Tools for analyzing ELF binaries (`.so`), ARM/ARM64/x86 disassembly, and native debugging.
+| Resource | Best for |
+|---|---|
+| [CyberChef](https://github.com/gchq/CyberChef) | Safe, repeatable transformations and decoding |
+| [OpenSSL](https://www.openssl.org/) | TLS, certificates, hashes, and crypto utilities |
+| [Hashcat](https://github.com/hashcat/hashcat) | Authorized password recovery and hash auditing |
+| [John the Ripper](https://www.openwall.com/john/) | Authorized password auditing |
+| [jq](https://github.com/jqlang/jq) | Querying and transforming JSON |
+| [xxd](https://man7.org/linux/man-pages/man1/xxd.1.html) | Hex dumps and binary file inspection |
+| [ExifTool](https://exiftool.org/) | Metadata and file-format inspection |
+| [Kaitai Struct](https://kaitai.io/) | Describing and parsing binary formats |
 
-### Disassemblers & Decompilers
+## Automation, emulation, and scripting
 
-| Tool | Description |
-|------|-------------|
-| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) 🟢 | NSA's software reverse engineering suite with a powerful decompiler, scripting support, and multi-architecture processors. |
-| [IDA Pro / IDA Free](https://hex-rays.com/ida-pro) 🔒 | Industry-standard interactive disassembler with the Hex-Rays decompiler and extensive plugin ecosystem. |
-| [Binary Ninja](https://binary.ninja) 🔒 | Modern reverse engineering platform with intermediate languages (BNIL) and a clean scripting API. |
-| [Rizin](https://github.com/rizinorg/rizin) 🟢 | Reverse engineering framework and command-line toolset, forked from radare2. |
-| [Cutter](https://github.com/rizinorg/cutter) 🟢 | Free GUI for Rizin with a Ghidra decompiler integration. |
-| [radare2](https://github.com/radareorg/radare2) 🟢 | Portable, scriptable reverse engineering framework with disassembly, debugging, and patching capabilities. |
+| Resource | Best for |
+|---|---|
+| [Qiling](https://github.com/qilingframework/qiling) | Scriptable multi-platform emulation |
+| [Unidbg](https://github.com/zhkl0228/unidbg) | Calling Android/iOS native libraries without a device |
+| [Ghidra scripts](https://github.com/mandiant/GhidraScripts) | Reusable Ghidra automation examples |
+| [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) | Unity IL2CPP metadata analysis |
+| [frida-il2cpp-bridge](https://github.com/vfsfitvnm/frida-il2cpp-bridge) | Unity IL2CPP runtime inspection |
+| [Python](https://www.python.org/) | General-purpose analysis automation |
+| [Go](https://go.dev/) | Fast portable utilities and tooling |
+| [PowerShell](https://github.com/PowerShell/PowerShell) | Windows and cross-platform automation |
 
-### Debuggers
+## Developer and workflow tools
 
-| Tool | Description |
-|------|-------------|
-| [GDB / gdbserver](https://sourceware.org/gdb/) 🟢 | GNU debugger; `gdbserver` from the Android NDK enables remote debugging of native processes. |
-| [LLDB](https://lldb.llvm.org/) 🟢 | LLVM debugger, used by Android Studio for native debugging. |
-| [pwndbg](https://github.com/pwndbg/pwndbg) 🟢 | GDB/LLDB plugin that improves exploit development and reverse engineering ergonomics. |
-| [GEF](https://github.com/hugsy/gef) 🟢 | Feature-rich GDB enhancement for reverse engineers and exploit developers. |
+| Resource | Best for |
+|---|---|
+| [Git](https://git-scm.com/) | Version control and reproducible changes |
+| [GitHub CLI](https://cli.github.com/) | GitHub workflows from the terminal |
+| [Docker](https://www.docker.com/) | Isolated, repeatable environments |
+| [Podman](https://podman.io/) | Daemonless containers |
+| [VS Code](https://code.visualstudio.com/) | Lightweight editing and extension-based workflows |
+| [Neovim](https://neovim.io/) | Terminal-first, extensible editing |
+| [just](https://github.com/casey/just) | Reusable project commands |
+| [Task](https://taskfile.dev/) | Cross-platform task automation |
+| [pre-commit](https://pre-commit.com/) | Automated formatting and checks |
+| [Dev Containers](https://containers.dev/) | Portable development environments |
 
-### Supporting Libraries
+## Game modding
 
-| Tool | Description |
-|------|-------------|
-| [Capstone](https://github.com/capstone-engine/capstone) 🟢 | Lightweight multi-architecture disassembly framework. |
-| [Keystone](https://github.com/keystone-engine/keystone) 🟢 | Multi-architecture assembler framework. |
-| [Unicorn](https://github.com/unicorn-engine/unicorn) 🟢 | Lightweight multi-architecture CPU emulator framework. |
-| [Android NDK](https://developer.android.com/ndk) 🟢 | Official toolchain including `objdump`, `readelf`, `llvm-*` utilities, and symbolication tools. |
+Use official modding APIs and mod only games you own or are permitted to modify. Avoid cheats, DRM circumvention, multiplayer abuse, and redistribution of copyrighted assets.
 
----
+| Resource | Best for |
+|---|---|
+| [BepInEx](https://github.com/BepInEx/BepInEx) | Unity/.NET plugin framework |
+| [MelonLoader](https://github.com/LavaGang/MelonLoader) | Unity and Il2Cpp mod loader |
+| [Harmony](https://github.com/pardeike/Harmony) | Runtime .NET method patching |
+| [Unity documentation](https://docs.unity3d.com/Manual/index.html) | Official Unity development reference |
+| [Unreal Engine documentation](https://dev.epicgames.com/documentation/en-us/unreal-engine) | Official Unreal development reference |
+| [Godot documentation](https://docs.godotengine.org/) | Open-source engine and scripting reference |
 
-## Hooking Frameworks (ART and Native)
+## Learning resources
 
-Frameworks that intercept and modify behavior at the Java/ART layer or the native layer at runtime.
+- [OWASP Mobile Application Security](https://mas.owasp.org/) — mobile testing guide and checklist
+- [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/) — structured web testing methodology
+- [Android Developers](https://developer.android.com/) — official Android platform documentation
+- [Android Internals](https://source.android.com/) — AOSP architecture and source documentation
+- [Trail of Bits Security Training](https://github.com/trailofbits/training) — practical security exercises
+- [pwn.college](https://pwn.college/) — hands-on systems and exploitation education
+- [OverTheWire](https://overthewire.org/wargames/) — beginner-friendly security wargames
+- [PortSwigger Web Security Academy](https://portswigger.net/web-security) — free web security labs
+- [crackmes.one](https://crackmes.one/) — legal reverse engineering challenges
+- [CTFtime](https://ctftime.org/) — capture-the-flag events and writeups
+- [Ghidra documentation](https://ghidra-sre.org/) — official training material and references
 
-### ART / Java Layer
+## Guides
 
-| Tool | Description |
-|------|-------------|
-| [LSPosed](https://github.com/LSPosed/LSPosed) 🟢 | Xposed-compatible framework built on ART hooking via Magisk/Zygisk; enables per-app module scoping without modifying APKs. |
-| [LSPatch](https://github.com/LSPosed/LSPatch) 🟢 | Non-root Xposed-style framework that embeds hooks by repackaging the target APK. |
-| [LSPlant](https://github.com/LSPosed/LSPlant) 🟢 | Standalone ART hooking library used by LSPosed for Android 5.0+ method hooking. |
-| [Xposed API (XposedBridge)](https://github.com/rovo89/XposedBridge) 🕰️ | Original Xposed API that defined the module development model still followed by modern frameworks. |
-| [Pine](https://github.com/canyie/pine) 🟢 | Dynamic Java method hook framework for ART, usable within a single app process. |
-| [SandHook](https://github.com/asLody/SandHook) 🕰️ | Android ART hook library supporting a wide range of Android versions. |
-| [Epic](https://github.com/tiann/epic) 🕰️ | Dynamic Java method hooking library for ART in the app process. |
-
-### Native Layer
-
-| Tool | Description |
-|------|-------------|
-| [Frida](https://github.com/frida/frida) 🟢 | Dynamic instrumentation toolkit that hooks both Java and native functions from JavaScript, with cross-platform support. |
-| [Dobby](https://github.com/jmpews/Dobby) 🟢 | Lightweight, multi-platform inline hook framework for native code. |
-| [ShadowHook](https://github.com/bytedance/android-inline-hook) 🟢 | ByteDance's Android inline hook library for ARM/ARM64 with stability-focused design. |
-| [xHook](https://github.com/iqiyi/xHook) 🕰️ | PLT/GOT hook library for Android native ELF files. |
-
----
-
-## API Bypasses and System Modifications
-
-Tools for analysis environments, traffic inspection, certificate handling, and system-level customization. Use only on devices and applications you own or are authorized to test.
-
-### Root & System Frameworks
-
-| Tool | Description |
-|------|-------------|
-| [Magisk](https://github.com/topjohnwu/Magisk) 🟢 | Systemless root solution and module platform, including Zygisk for in-process module injection. |
-| [KernelSU](https://github.com/tiann/KernelSU) 🟢 | Kernel-based root solution with per-app profiles and module support. |
-| [APatch](https://github.com/bmax121/APatch) 🟢 | Kernel- and system-patching root solution with an integrated module system. |
-
-### Traffic Analysis & Certificate Handling
-
-| Tool | Description |
-|------|-------------|
-| [mitmproxy](https://github.com/mitmproxy/mitmproxy) 🟢 | Interactive HTTPS proxy for inspecting and modifying traffic during security testing. |
-| [Burp Suite](https://portswigger.net/burp) 🔒 | Web and mobile application security testing platform with an intercepting proxy. |
-| [MagiskTrustUserCerts](https://github.com/NVISOsecurity/MagiskTrustUserCerts) 🟢 | Magisk module that moves user-installed CA certificates into the system trust store for testing. |
-| [apk-mitm](https://github.com/niklashigi/apk-mitm) 🟢 | Automatically patches APKs to allow HTTPS inspection by adjusting network security config. |
-| [objection](https://github.com/sensepost/objection) 🟢 | Frida-powered runtime exploration toolkit with built-in helpers for pinning analysis and keystore/filesystem inspection. |
-| [reFlutter](https://github.com/Impact-I/reFlutter) 🟢 | Framework for reverse engineering Flutter apps using a patched Flutter engine. |
-| [TrustMeAlready](https://github.com/ViRb3/TrustMeAlready) 🕰️ | Xposed module that disables certificate validation checks in target apps for testing. |
-
-### App Patching & Modding
-
-| Tool | Description |
-|------|-------------|
-| [ReVanced](https://github.com/ReVanced) 🟢 | Open-source patcher framework for applying modular patches to Android apps. |
-| [Xposed Modules Repository](https://modules.lsposed.org/) 🟢 | Community index of LSPosed-compatible modules for system and app customization. |
-
----
-
-## Scripting & Instrumentation
-
-Tools that enable automation, tracing, and emulation for dynamic analysis.
-
-| Tool | Description |
-|------|-------------|
-| [frida-tools](https://github.com/frida/frida) 🟢 | CLI utilities (`frida`, `frida-trace`, `frida-ps`) for scripting and tracing running processes. |
-| [Frida CodeShare](https://codeshare.frida.re/) 🟢 | Community repository of reusable Frida scripts. |
-| [r2frida](https://github.com/nowsecure/r2frida) 🟢 | Bridges radare2 and Frida for combined static and dynamic analysis. |
-| [jnitrace](https://github.com/chame1eon/jnitrace) 🟢 | Traces JNI API calls made from native libraries, built on Frida. |
-| [frida-il2cpp-bridge](https://github.com/vfsfitvnm/frida-il2cpp-bridge) 🟢 | Frida module for inspecting and instrumenting Unity IL2CPP applications at runtime. |
-| [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) 🟢 | Extracts type and method metadata from Unity IL2CPP binaries to aid reverse engineering. |
-| [Dexcalibur](https://github.com/FrenchYeti/dexcalibur) 🟢 | Android reverse engineering platform that automates hook generation and analysis using Frida. |
-| [drozer](https://github.com/WithSecureLabs/drozer) 🟢 | Security assessment framework for Android app attack surface and IPC analysis. |
-| [Inspeckage](https://github.com/ac-pm/Inspeckage) 🕰️ | Xposed-based dynamic analysis tool with a web interface for monitoring app behavior. |
-| [Qiling Framework](https://github.com/qilingframework/qiling) 🟢 | Scriptable binary emulation framework supporting multiple platforms and architectures. |
-| [unidbg](https://github.com/zhkl0228/unidbg) 🟢 | Emulator for calling and analyzing Android/iOS native libraries without a device. |
-| [Ghidrathon](https://github.com/mandiant/Ghidrathon) 🟢 | Enables Python 3 scripting in Ghidra. |
-
----
-
-## Deobfuscation & Unpacking Tools
-
-Tools for identifying protectors, reversing obfuscation, and recovering original code from packed applications.
-
-### Identification
-
-| Tool | Description |
-|------|-------------|
-| [APKiD](https://github.com/rednaga/APKiD) 🟢 | Identifies compilers, packers, obfuscators, and protectors used in Android apps. |
-
-### Deobfuscation
-
-| Tool | Description |
-|------|-------------|
-| [Simplify](https://github.com/CalebFenton/simplify) 🕰️ | Generic Android deobfuscator that uses virtual execution to simplify obfuscated code. |
-| [Java Deobfuscator](https://github.com/java-deobfuscator/deobfuscator) 🟢 | Deobfuscation tool targeting common Java obfuscators. |
-| [JADX (deobfuscation mode)](https://github.com/skylot/jadx) 🟢 | Renames obfuscated identifiers to readable names to improve navigation. |
-| [Miasm](https://github.com/cea-sec/miasm) 🟢 | Reverse engineering framework with symbolic execution and IR lifting for code simplification. |
-
-### Unpacking & Dumping
-
-| Tool | Description |
-|------|-------------|
-| [frida-dexdump](https://github.com/hluwa/frida-dexdump) 🟢 | Locates and dumps DEX files from process memory using Frida. |
-| [BlackDex](https://github.com/CodingGay/BlackDex) 🟢 | On-device DEX unpacker that requires no root. |
-| [FART](https://github.com/hanbinglengyue/FART) 🕰️ | ART-based active-invocation unpacker for recovering protected DEX methods. |
-| [DexHunter](https://github.com/zyq8709/DexHunter) 🕰️ | Modified Dalvik runtime approach for extracting DEX files from packed apps. |
-
----
-
-## Learning Resources
-
-- [OWASP Mobile Application Security (MAS)](https://mas.owasp.org/) — testing guide, weakness taxonomy, and checklists
-- [Android Developers: Security](https://developer.android.com/privacy-and-security/security-tips) — official platform security documentation
-- [Frida Documentation](https://frida.re/docs/home/) — official handbook and API reference
-- [Ghidra Documentation](https://ghidra-sre.org/) — official site with cheat sheets and training material
-- Add books, courses, CTFs, and blogs here
-
----
+- [Quick start](QUICK_START.md) — safe setup and first workflows
+- [Category guide](CATEGORIES.md) — what belongs where
+- [Learning paths](LEARNING_PATHS.md) — beginner, intermediate, and advanced routes
+- [Tools by platform](TOOLS_BY_PLATFORM.md) — Windows, Linux, macOS, and container notes
+- [Resources by skill level](RESOURCES_BY_SKILL_LEVEL.md) — a faster starting point for new users
 
 ## Contributing
 
-Contributions are welcome. Before opening a pull request:
-
-1. Confirm the tool is not already listed.
-2. Place it in the most relevant category, in alphabetical order where practical.
-3. Use this format:
-
-   ```md
-   | [Tool Name](https://link) 🟢 | One-sentence, neutral description of what it does. |
-   ```
-
-4. Verify that the link works and that the project is maintained, or mark it 🕰️.
-5. Avoid promotional language and do not add tools whose primary purpose is malicious.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
-
----
+Found a broken link, better replacement, or missing category? See [CONTRIBUTING.md](CONTRIBUTING.md). Keep entries neutral, useful, authorized-use focused, and easy to verify.
 
 ## License
 
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, the contributors have waived all copyright and related rights to this work.
+This directory is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
